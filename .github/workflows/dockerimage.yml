@@ -18,5 +18,5 @@ jobs:
       run: |
         git clone --branch feature/mark_slow_tests https://github.com/Xilinx/finn.git
         cd finn
-        docker build -t finn_ci:$(date +%s) -f docker/Dockerfile.finn_ci --build-arg BUILD_PATH=/tmp/finn_ci --build-arg FINN_CI_BRANCH=feature/mark_slow_tests docker/
-        docker run --name finn_ci --init --hostname finn_ci -e NUM_DEFAULT_WORKERS=4 -e FINN_INST_NAME=finn_ci finn_ci:$(date +%s) quicktest.sh
+        docker build -t finn_ci -f docker/Dockerfile.finn_ci --build-arg BUILD_PATH=/tmp/finn_ci --build-arg FINN_CI_BRANCH=feature/mark_slow_tests docker/
+        docker run --name finn_ci --init --hostname finn_ci -e NUM_DEFAULT_WORKERS=4 -e FINN_INST_NAME=finn_ci finn_ci quicktest.sh
